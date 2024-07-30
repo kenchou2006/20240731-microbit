@@ -17,20 +17,16 @@ def on_forever():
         basic.pause(1000)
         cuteBot.motors(40, 20)
         basic.pause(500)
-        cuteBot.motors(30, 30)
+        while cuteBot.track_side(cuteBot.MbPins.LEFT, cuteBot.MbEvents.LOSE_LINE) and cuteBot.track_side(cuteBot.MbPins.RIGHT, cuteBot.MbEvents.LOSE_LINE):
+            cuteBot.motors(30, 30)
     else:
         basic.show_number(1)
     if cuteBot.tracking(cuteBot.TrackingState.L_R_LINE):
-        cuteBot.motors(100, 100)
+        cuteBot.motors(70, 70)
     if cuteBot.tracking(cuteBot.TrackingState.L_UNLINE_R_LINE):
         a = 1
-        cuteBot.motors(100, 40)
+        cuteBot.motors(70, 20)
     if cuteBot.tracking(cuteBot.TrackingState.L_LINE_R_UNLINE):
         a = 2
-        cuteBot.motors(40, 100)
-    if cuteBot.tracking(cuteBot.TrackingState.L_R_UNLINE):
-        if a == 1:
-            cuteBot.motors(100, 0)
-        else:
-            cuteBot.motors(0, 100)
+        cuteBot.motors(20, 70)
 basic.forever(on_forever)
